@@ -1,11 +1,13 @@
 package ex_02;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	}
 
