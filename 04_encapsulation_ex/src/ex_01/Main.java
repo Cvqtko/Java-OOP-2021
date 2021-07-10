@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		double length = Double.parseDouble(reader.readLine());
 		double width = Double.parseDouble(reader.readLine());
 		double height = Double.parseDouble(reader.readLine());
