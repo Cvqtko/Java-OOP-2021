@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import ex_01.Person;
+import ex_02.Person;
 
 public class Main {
 
