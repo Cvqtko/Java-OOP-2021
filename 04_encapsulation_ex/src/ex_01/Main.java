@@ -13,12 +13,13 @@ public class Main {
 		double length = Double.parseDouble(reader.readLine());
 		double width = Double.parseDouble(reader.readLine());
 		double height = Double.parseDouble(reader.readLine());
-
+		StringBuilder sb = new StringBuilder();
 		try {
 			Box box = new Box(length, width, height);
-			System.out.printf("Surface Area - %.2f%n", box.calculateSurfaceArea());
-			System.out.printf("Lateral Surface Area - %.2f%n", box.calculateLateralSurfaceArea());
-			System.out.printf("Volume – %.2f%n", box.calculateVolume());
+			sb.append(String.format("Surface Area - %.2f%n", box.calculateSurfaceArea()));
+			sb.append(String.format("Lateral Surface Area - %.2f%n", box.calculateLateralSurfaceArea()));
+			sb.append(String.format("Volume – %.2f%n", box.calculateVolume()));
+			System.out.println(sb.toString());
 		} catch (IllegalArgumentException ex) {
 			System.out.println(ex.getMessage());
 		}
