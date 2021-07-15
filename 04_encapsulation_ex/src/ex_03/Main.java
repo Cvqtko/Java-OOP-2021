@@ -7,11 +7,10 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
 public class Main {
 
-	private static final Map<String, Person> people = new LinkedHashMap<>();
-	private static final Map<String, Product> products = new LinkedHashMap<>();
+	private static Map<String, Person> people = new LinkedHashMap<>();
+	private static Map<String, Product> products = new LinkedHashMap<>();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -29,6 +28,7 @@ public class Main {
 			try {
 				String[] tokens = command.split("\\s+");
 				people.get(tokens[0]).buyProduct(products.get(tokens[1]));
+
 			} catch (IllegalArgumentException exception) {
 				System.out.println(exception.getMessage());
 			}

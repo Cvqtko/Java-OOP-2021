@@ -42,9 +42,9 @@ public class Person {
 	public String toString() {
 		StringBuilder output = new StringBuilder();
 		output.append(this.getName()).append(" - ");
-		output.append(this.products.isEmpty() ? "Nothing bought"
-				: output.append(products.stream().map(Product::getName).collect(Collectors.joining(", ")))
-						.append(System.lineSeparator()));
+
+		output.append(this.products.isEmpty() ? "Nothing bought" : products.stream().map(Product::getName).collect(Collectors.joining(", "))).append(System.lineSeparator());
+
 		return output.toString().trim();
 	}
 }
