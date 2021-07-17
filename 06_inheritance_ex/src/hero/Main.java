@@ -1,4 +1,4 @@
-package ex_03;
+package hero;
 
 import java.util.Scanner;
 
