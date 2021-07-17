@@ -35,6 +35,12 @@ public class Vehicle {
 	public void setHorsePower(int horsePower) {
 		this.horsePower = horsePower;
 	}
+	
+	
+
+	public static double getDefaultFuelConsumption() {
+		return DEFAULT_FUEL_CONSUMPTION;
+	}
 
 	public void drive(double kilometers) {
 		double consumedFuel = kilometers * this.fuelConsumption;
