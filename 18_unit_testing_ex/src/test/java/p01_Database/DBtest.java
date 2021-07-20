@@ -1,10 +1,9 @@
 package p01_Database;
 
-import org.junit.jupiter.api.Test;
-
 import javax.naming.OperationNotSupportedException;
 
 import org.junit.Assert;
+import org.junit.*;
 
 class DBtest {
 
@@ -20,5 +19,11 @@ class DBtest {
 		// assert
 		Assert.assertEquals(elements.length, database.getElements().length);
 		Assert.assertArrayEquals(elements, database.getElements());
+	}
+	
+	@Test(expected = OperationNotSupportedException.class)
+	public void when_elementsMoreThanSixteenPassedToConstructor_then_exceptionIsThrown() throws OperationNotSupportedException {
+		Integer[] elements = new Integer[17];
+		Database database = new Database(elements);
 	}
 }
