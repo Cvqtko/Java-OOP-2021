@@ -3,7 +3,8 @@ package p01_Database;
 import javax.naming.OperationNotSupportedException;
 
 import org.junit.Assert;
-import org.junit.*;
+import org.junit.Test;
+
 
 class DBtest {
 
@@ -25,5 +26,10 @@ class DBtest {
 	public void when_elementsMoreThanSixteenPassedToConstructor_then_exceptionIsThrown() throws OperationNotSupportedException {
 		Integer[] elements = new Integer[17];
 		Database database = new Database(elements);
+	}
+	
+	@Test(expected = OperationNotSupportedException.class)
+	public void when_elementsLessThanOnePassedToConstructor_than_exceptionIsThrown() throws OperationNotSupportedException {
+		Database database = new Database();
 	}
 }
