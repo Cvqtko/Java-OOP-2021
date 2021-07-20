@@ -28,7 +28,7 @@ class DBtest {
 		Database database = new Database(elements);
 	}
 	
-	@Test(expected = OperationNotSupportedException.class)
+	@Test
 	public void when_elementsLessThanOnePassedToConstructor_than_exceptionIsThrown() throws OperationNotSupportedException {
 		Database database = new Database();
 	}
