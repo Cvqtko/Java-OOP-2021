@@ -3,8 +3,8 @@ package p01_Database;
 import javax.naming.OperationNotSupportedException;
 
 import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class DBtest {
 
@@ -21,15 +21,20 @@ class DBtest {
 		Assert.assertEquals(elements.length, database.getElements().length);
 		Assert.assertArrayEquals(elements, database.getElements());
 	}
-	
-	@Test(expected = OperationNotSupportedException.class)
-	public void when_elementsMoreThanSixteenPassedToConstructor_then_exceptionIsThrown() throws OperationNotSupportedException {
-		Integer[] elements = new Integer[17];
-		Database database = new Database(elements);
+
+	@Test()
+	public void when_elementsMoreThanSixteenPassedToConstructor_then_exceptionIsThrown() {
+		Assertions.assertThrows(OperationNotSupportedException.class, () -> {
+			Integer[] elements = new Integer[17];
+			Database database = new Database(elements);
+		});
+
 	}
-	
-	@Test(expected = OperationNotSupportedException.class)
-	public void when_elementsLessThanOnePassedToConstructor_than_exceptionIsThrown() throws OperationNotSupportedException {
+
+	@Test
+	public void when_elementsLessThanOnePassedToConstructor_than_exceptionIsThrown() {
+		Assertions.assertThrows(OperationNotSupportedException.class, () -> {
 		Database database = new Database();
+		});
 	}
 }
