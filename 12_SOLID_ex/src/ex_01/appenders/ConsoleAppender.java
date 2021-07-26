@@ -4,28 +4,16 @@ import emuns.ReportLevel;
 import ex_01.interfaces.Appender;
 import ex_01.interfaces.Layout;
 
-public class ConsoleAppender implements Appender {
-
-	private Layout layout;
-	private ReportLevel reportLevel;
+public class ConsoleAppender extends BaseAppender {
 
 	public ConsoleAppender(Layout layout) {
-		this.layout = layout;
-		this.reportLevel = reportLevel.INFO;
+		super(layout);
+
 	}
 
 	@Override
-	public void appendMessage(String dateTime, ReportLevel reportLevel, String message) {
-		
-		if (this.reportLevel.ordinal() <= reportLevel.ordinal()) {
-			System.out.println(String.format(this.layout.getLayout(), dateTime, reportLevel.toString(), message));
-
-		}
-	}
-
-	@Override
-	public void setReportLevel(ReportLevel reportLevel) {
-		this.reportLevel = reportLevel;
+	protected void append(String text) {
+		System.out.println(text);
 
 	}
 
