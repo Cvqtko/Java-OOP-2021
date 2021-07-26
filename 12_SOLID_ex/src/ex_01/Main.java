@@ -1,28 +1,30 @@
 package ex_01;
 
-import emuns.ReportLevel;
-import ex_01.appenders.ConsoleAppender;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Scanner;
+
 import ex_01.interfaces.Appender;
 import ex_01.interfaces.Layout;
-import ex_01.interfaces.Logger;
-import ex_01.layouts.SimpleLayout;
-import ex_01.models.MessageLogger;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Layout simpleLayout = new SimpleLayout();
-		Appender consoleAppender = new ConsoleAppender(simpleLayout);
-		consoleAppender.setReportLevel(ReportLevel.ERROR);
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		Scanner scanner = new Scanner(System.in);
+		int appenderCount = Integer.parseInt(scanner.nextLine());
+		Appender[] appenders = new Appender[appenderCount];
 
-		Logger logger = new MessageLogger(consoleAppender);
+		for (int i = 0; i < appenderCount; i++) {
+			String[] tokens = scanner.nextLine().split("\\s+");
 
-		logger.logInfo("3/31/2015 5:33:07 PM", "Everything seems fine");
-		logger.logWarning("3/31/2015 5:33:07 PM", "Warning: ping is too high - disconnect imminent");
-		logger.logError("3/31/2015 5:33:07 PM", "Error parsing request");
-		logger.logCritical("3/31/2015 5:33:07 PM", "No connection string found in App.config");
-		logger.logFatal("3/31/2015 5:33:07 PM", "mscorlib.dll does not respond");
+			Layout layout = getLayout(tokens[1]);
+			System.out.println();
+		}
 
+	}
+
+	private static Layout getLayout(String layoutName) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		Class clazz = Class.forName("ex_01.layouts." + layoutName);
+		return (Layout)clazz.getConstructor().newInstance();
 	}
 
 }
