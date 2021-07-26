@@ -45,4 +45,15 @@ public class MessageLogger implements Logger {
 			appender.appendMessage(dateTime, reportLevel, message);
 		}
 	}
+
+	public String getLogInfo() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Logger info");
+		for (Appender appender : this.appenders) {
+			sb.append(System.lineSeparator()).append(appender);
+
+		}
+		return sb.toString();
+	}
+
 }

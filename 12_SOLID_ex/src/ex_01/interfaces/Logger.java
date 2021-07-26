@@ -11,4 +11,6 @@ public interface Logger {
 	void logCritical(String dateTime, String message);
 
 	void logFatal(String dateTime, String message);
+	
+	 String getLogInfo();
 }
