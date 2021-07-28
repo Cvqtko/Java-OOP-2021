@@ -28,18 +28,25 @@ public class UnitRepository implements Repository {
 	public String getStatistics() {
 		StringBuilder statBuilder = new StringBuilder();
 		for (Map.Entry<String, Integer> entry : amountOfUnits.entrySet()) {
-			String formatedEntry =
-					String.format("%s -> %d%n", entry.getKey(), entry.getValue());
+			String formatedEntry = String.format("%s -> %d%n", entry.getKey(), entry.getValue());
 			statBuilder.append(formatedEntry);
 		}
-		statBuilder.setLength(
-				statBuilder.length() - System.lineSeparator().length());
+		statBuilder.setLength(statBuilder.length() - System.lineSeparator().length());
 
 		return statBuilder.toString();
 	}
 
 	public void removeUnit(String unitType) throws ExecutionControl.NotImplementedException {
 		// TODO: implement for problem 4
+
+		int unitsAmount = this.amountOfUnits.get(unitType);
+		if (unitsAmount <= 0) {
+			this.amountOfUnits.remove(unitType);
+			throw new IllegalArgumentException("No such units in repository.");
+
+		} else {
+			this.amountOfUnits.put(unitType, unitsAmount - 1);
+		}
 		throw new ExecutionControl.NotImplementedException("message");
 	}
 }

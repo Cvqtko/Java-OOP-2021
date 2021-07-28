@@ -5,7 +5,7 @@ import barracksWars.interfaces.Runnable;
 import barracksWars.interfaces.Unit;
 import barracksWars.interfaces.UnitFactory;
 import jdk.jshell.spi.ExecutionControl;
-
+import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +23,7 @@ public class Engine implements Runnable {
 
 	@Override
 	public void run() {
-		BufferedReader reader = new BufferedReader(
-				new InputStreamReader(System.in));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
 				String input = reader.readLine();
@@ -47,17 +46,20 @@ public class Engine implements Runnable {
 	private String interpretCommand(String[] data, String commandName) throws ExecutionControl.NotImplementedException {
 		String result;
 		switch (commandName) {
-			case "add":
-				result = this.addUnitCommand(data);
-				break;
-			case "report":
-				result = this.reportCommand(data);
-				break;
-			case "fight":
-				result = this.fightCommand(data);
-				break;
-			default:
-				throw new RuntimeException("Invalid command!");
+		case "add":
+			result = this.addUnitCommand(data);
+			break;
+		case "report":
+			result = this.reportCommand(data);
+			break;
+		case "fight":
+			result = this.fightCommand(data);
+			break;
+		case "retire":
+			result = this.retireCommand(data);
+			break;
+		default:
+			throw new RuntimeException("Invalid command!");
 		}
 		return result;
 	}
@@ -74,8 +76,19 @@ public class Engine implements Runnable {
 		String output = unitType + " added!";
 		return output;
 	}
-	
+
 	private String fightCommand(String[] data) {
 		return "fight";
+	}
+
+	private String retireCommand(String[] data) {
+		String unitType = data[1];
+		try {
+			this.repository.removeUnit(unitType);
+		} catch (NotImplementedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return unitType + " retired!";
 	}
 }
