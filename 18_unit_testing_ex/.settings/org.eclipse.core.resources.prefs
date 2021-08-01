@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/test/DatabaseTest.java=UTF-8
+encoding//src/test/ExtendedDatabaseTest.java=UTF-8
+encoding//src/test/ListIteratorTest.java=UTF-8
+encoding//src/test/TirePressureTest.java=UTF-8
