@@ -1,22 +1,24 @@
 public interface ProductStock extends Iterable<Product> {
-    //getter
-    int getCount();
 
-    //Validations
-    boolean contains(Product product);
+	Integer getCount();
 
-    //Modifications
-    void add(Product product);
-    void changeQuantity(String product, int quantity);
+	Boolean contains(Product product);
 
-    //Retrievals
-    Product find(int index);
-    Product findByLabel(String label);
-    Iterable<Product> findFirstByAlphabeticalOrder(int count);
+	void add(Product product);
 
-    //Querying
-    Iterable<Product> findAllInRange(double lo, double hi);
-    Iterable<Product> findAllByPrice(double price);
-    Iterable<Product> findFirstMostExpensiveProducts(int count);
-    Iterable<Product> findAllByQuantity(int quantity);
+	void changeQuantity(String product, int quantity);
+
+	Product find(int index);
+
+	Product findByLabel(String label);
+
+	Iterable<Product> findFirstByAlphabeticalOrder(int count);
+
+	Iterable<Product> findAllInRange(double lo, double hi);
+
+	Iterable<Product> findAllByPrice(double price);
+
+	Iterable<Product> findFirstMostExpensiveProducts(int count);
+
+	Iterable<Product> findAllByQuantity(int quantity);
 }
