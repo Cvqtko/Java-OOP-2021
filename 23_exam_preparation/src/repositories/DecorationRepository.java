@@ -1,0 +1,33 @@
+package repositories;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import entities.decorations.Decoration;
+
+public class DecorationRepository implements Repository {
+
+	private List<Decoration> decorations;
+
+	public DecorationRepository() {
+
+		this.decorations = new ArrayList<>();
+	}
+
+	@Override
+	public void add(Decoration decoration) {
+		decorations.add(decoration);
+
+	}
+
+	@Override
+	public boolean remove(Decoration decoration) {
+		return decorations.remove(decoration);
+	}
+
+	@Override
+	public Decoration findByType(String type) {
+		return decorations.stream().filter(d -> d.getClass().getSimpleName().equals(type)).findFirst().orElse(null);
+	}
+
+}
