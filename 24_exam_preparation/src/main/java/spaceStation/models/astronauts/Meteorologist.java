@@ -1,0 +1,17 @@
+package spaceStation.models.astronauts;
+
+public class Meteorologist extends BaseAstronaut{
+	private static final double OXYGEN = 90;
+
+	public Meteorologist(String name) {
+		super(name, OXYGEN);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	@Override
+	public void breath() {
+		this.setOxygen(this.getOxygen()-5);
+		
+	}
+}

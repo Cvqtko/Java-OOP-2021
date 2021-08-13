@@ -3,7 +3,7 @@ package spaceStation.models.astronauts;
 import spaceStation.common.ExceptionMessages;
 import spaceStation.models.bags.Bag;
 
-public class BaseAstronaut {
+public abstract class BaseAstronaut implements Astronaut{
 	private String name;
 	private double oxygen;
 	private Bag bag;
@@ -41,6 +41,18 @@ public class BaseAstronaut {
 
 	public void setBag(Bag bag) {
 		this.bag = bag;
+	}
+
+	@Override
+	public boolean canBreath() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void breath() {
+		this.setOxygen(this.getOxygen()-10);;
+		
 	}
 
 }
